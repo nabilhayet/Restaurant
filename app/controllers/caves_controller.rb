@@ -1,0 +1,2 @@
+class CavesController < ApplicationController
+end
