@@ -1,17 +1,33 @@
 <h2>Welcome to our Sign-up page!</h2> 
-<%= form_for :user, url: '/signup' do |f| %>
+<%= form_for @user, url: '/signup' do |f| %>
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+  
     name: <%= f.text_field :name %>
     <br>
     <br>
+    
     username: <%= f.text_field :username %> 
     <br>
     <br>
+   
     Password: <%= f.password_field :password %>
     <br>
     <br>
+   
     Password Confirmation: <%= f.password_field :password_confirmation %>
     <br>
     <br>
+    
     contact: <%= f.text_field :contact %> 
     <br>
     <br>
