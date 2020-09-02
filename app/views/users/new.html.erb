@@ -1,1 +1,19 @@
-<h1>Sign up</h1> 
+<h2>Welcome to our Sign-up page!</h2> 
+<%= form_for :user, url: '/signup' do |f| %>
+    name: <%= f.text_field :name %>
+    <br>
+    <br>
+    username: <%= f.text_field :username %> 
+    <br>
+    <br>
+    Password: <%= f.password_field :password %>
+    <br>
+    <br>
+    Password Confirmation: <%= f.password_field :password_confirmation %>
+    <br>
+    <br>
+    contact: <%= f.text_field :contact %> 
+    <br>
+    <br>
+    <%= f.submit "Submit" %>
+  <% end %>

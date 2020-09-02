@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_09_01_010741) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "caves", force: :cascade do |t|
+  create_table "cafes", force: :cascade do |t|
     t.string "name"
     t.string "street"
     t.string "city"
