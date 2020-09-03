@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       @user = User.find_by(username: params[:user][:username])
        if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
-        render "home"
+        render "show"
       else 
         render "login"
       end 

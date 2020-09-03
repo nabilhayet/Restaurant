@@ -43,6 +43,6 @@ ActiveRecord::Schema.define(version: 2020_09_01_010741) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "bookings", "caves"
+  add_foreign_key "bookings", "cafes"
   add_foreign_key "bookings", "users"
 end

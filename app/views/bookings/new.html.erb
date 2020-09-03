@@ -1,0 +1,20 @@
+<%= form_for(@booking) do |f| %>
+    <h3>Select a cafe from the available options</h3> 
+    <%= f.collection_radio_buttons :cafe_id, Cafe.all, :id, :name %>
+    <%= f.hidden_field :user_id %>
+    <br>
+    <br>
+    <label>Booking Date:</label>
+    <%= f.date_field :date %>
+    <br>
+    <br>
+    <label>Booking Time</label><br>
+    <%= f.time_field :time %>
+    <br>
+    <br>
+    <label>Booking Table</label><br>
+    <%= f.select :table_num, (0..10) %>
+    <br>
+    <br>
+    <%= f.submit %>
+  <% end %>

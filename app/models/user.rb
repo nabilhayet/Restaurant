@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_secure_password 
     has_many :bookings
     has_many :cafes, through: :bookings
+    accepts_nested_attributes_for :bookings
 
     validates :name, presence: true
     validates :username, presence: true
