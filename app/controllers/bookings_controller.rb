@@ -1,36 +1,62 @@
 class BookingsController < ApplicationController
 
-    def index 
-
-    end 
+    def index
+        if params[:user_id]
+          @user = current_user
+          @bookings = User.find(params[:user_id]).bookings
+        else
+          @bookings = Booking.all
+        end
+      end
 
     def show 
+        @user = current_user
         @booking = Booking.find_by(params[:id])
     end 
 
     def new 
-     @booking = Booking.new(user_id: params[:user_id])
+     @user = current_user 
+    #  @booking = Booking.new(user_id: params[:user_id])
+     @booking = @user.bookings.build
+
     end 
 
     def create
+        @user = current_user 
         @booking = Booking.new(booking_params)
-        binding.pry
         if @booking.save
-          redirect_to booking_path(@booking)
+          redirect_to user_booking_path(@user, @booking)
         else
           render :new
         end
     end
 
-    def edit 
+    def edit
+        if params[:user_id]
+          @user = User.find_by(id: params[:user_id])
+          if @user.nil?
+            redirect_to user_path, alert: "User not found."
+          else
+            @booking = @user.bookings.find_by(id: params[:id])
+            redirect_to user_bookings_path(user), alert: "Booking not found." if @booking.nil?
+          end
+        else
+          @booking = Booking.find(params[:id])
+        end
+      end
 
-    end 
-
-    def update 
-
-    end 
+      def update
+        @user = current_user 
+        @booking = Booking.find(params[:id])
+        @booking.update(booking_params)
+        redirect_to user_booking_path(@user,@booking)
+      end
 
     def destroy 
+     @user = current_user 
+     @booking = Booking.find(params[:id])
+     @booking.delete
+     redirect_to user_bookings_path(@user)
 
     end 
 

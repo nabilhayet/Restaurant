@@ -1,0 +1,24 @@
+<% @user.bookings.each do |b|%>
+    <div>
+   Username :  <%= b.user.name %>
+   <br> 
+   <br> 
+   Cafe name : <%= b.cafe.name %> 
+   <br> 
+   <br> 
+   Booking Date : <%= b.date %> 
+   <br>
+   <br> 
+   Booking Time : <%= b.time %>
+   <br>
+   <br> 
+   Booking Table : <%= b.table_num %>
+   <br>
+   <br> 
+   <%= button_to('Edit', edit_user_booking_path(@user, b), :method=>"get") %>
+   <br> 
+   <%= button_to('Delete', user_booking_path(@user, b), :method=>"delete") %>
+   </div> 
+   <br>
+   <br>
+   <% end  %> 

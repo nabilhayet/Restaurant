@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         render "show"
       else 
-        render "login"
+        redirect_to login_path 
       end 
     end 
 
