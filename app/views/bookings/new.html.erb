@@ -1,4 +1,14 @@
 <%= form_for [@user, @booking] do |f| %>
+    <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
     <h3>Select a cafe from the available options</h3> 
     <%= f.collection_radio_buttons :cafe_id, Cafe.all, :id, :name %>
     <%= f.hidden_field :user_id %>

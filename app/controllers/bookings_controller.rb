@@ -1,23 +1,34 @@
 class BookingsController < ApplicationController
 
     def index
+      if is_logged_in?
         if params[:user_id]
           @user = current_user
           @bookings = User.find(params[:user_id]).bookings
         else
           @bookings = Booking.all
         end
+      else 
+        redirect_to login_path 
+      end 
       end
 
     def show 
+      if is_logged_in?
         @user = current_user
         @booking = Booking.find_by(params[:id])
+      else 
+        redirect_to login_path 
+      end 
     end 
 
     def new 
-     @user = current_user 
-    #  @booking = Booking.new(user_id: params[:user_id])
-     @booking = @user.bookings.build
+      if is_logged_in?
+        @user = current_user 
+        @booking = @user.bookings.build
+      else 
+        redirect_to login_path 
+      end 
 
     end 
 
@@ -32,6 +43,7 @@ class BookingsController < ApplicationController
     end
 
     def edit
+      if is_logged_in?
         if params[:user_id]
           @user = User.find_by(id: params[:user_id])
           if @user.nil?
@@ -43,7 +55,10 @@ class BookingsController < ApplicationController
         else
           @booking = Booking.find(params[:id])
         end
-      end
+      else 
+        redirect_to login_path 
+      end 
+    end
 
       def update
         @user = current_user 
@@ -53,14 +68,13 @@ class BookingsController < ApplicationController
       end
 
     def destroy 
-     @user = current_user 
-     @booking = Booking.find(params[:id])
-     @booking.delete
-     redirect_to user_bookings_path(@user)
-
+      @user = current_user 
+      @booking = Booking.find(params[:id])
+      @booking.delete
+      redirect_to user_bookings_path(@user)
     end 
 
-    private
+  private
 
   def booking_params
     params.require(:booking).permit(:cafe_id, :user_id, :date, :time, :table_num)
