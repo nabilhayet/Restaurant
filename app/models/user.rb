@@ -4,10 +4,10 @@ class User < ApplicationRecord
     has_many :cafes, through: :bookings
     accepts_nested_attributes_for :bookings
 
-    validates :name, presence: true
-    validates :username, presence: true
-    validates :username, uniqueness: true
-    validates :username, length: { minimum: 6 }
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :email, presence: true
+    validates :email, uniqueness: true
     validates :password, presence: true
     validates(:password, { :length => { :in => 6..20 } })
     validates :contact, presence: true

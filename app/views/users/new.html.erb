@@ -12,15 +12,19 @@
     <% end %>
 
   
-    name: <%= f.text_field :name %>
+    First Name: <%= f.text_field :first_name %>
     <br>
     <br>
     
-    username: <%= f.text_field :username %> 
+    Last Name: <%= f.text_field :last_name %> 
     <br>
     <br>
-   
-    Password: <%= f.password_field :password %>
+  
+   Email: <%= f.text_field :email %>
+   <br>
+   <br>
+    
+   Password: <%= f.password_field :password %>
     <br>
     <br>
    
@@ -28,7 +32,7 @@
     <br>
     <br>
     
-    contact: <%= f.text_field :contact %> 
+    Contact: <%= f.text_field :contact %> 
     <br>
     <br>
     <%= f.submit "Submit" %>

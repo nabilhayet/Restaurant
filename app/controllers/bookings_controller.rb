@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
       else 
         redirect_to login_path 
       end 
-      end
+    end
 
     def show 
       if is_logged_in?
@@ -29,7 +29,6 @@ class BookingsController < ApplicationController
       else 
         redirect_to login_path 
       end 
-
     end 
 
     def create

@@ -1,6 +1,6 @@
 <% @user.bookings.each do |b|%>
     <div>
-   Username :  <%= b.user.name %>
+   Full Name :  <%= b.user.first_name %> <%= b.user.last_name %>
    <br> 
    <br> 
    Cafe name : <%= b.cafe.name %> 
