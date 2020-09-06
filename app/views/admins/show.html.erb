@@ -1,0 +1,8 @@
+<h1>Welcome <%= @admin.name%> to your homepage!</h1>
+<%= button_to('Add a Cafe', new_cafe_path, :method=>"get") %>
+<br> 
+<br> 
+<%= button_to('Logout', logout_path, :method=>"get") %>
+<br>
+<br>
+<%= button_to('View all cafes', cafes_path, :method=>"get") %>

@@ -6,6 +6,7 @@ class CreateCafes < ActiveRecord::Migration[6.0]
       t.string :city
       t.string :state
       t.integer :zipcode
+      t.belongs_to :admin, null: false, foreign_key: true
 
       t.timestamps
     end
