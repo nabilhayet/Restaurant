@@ -8,11 +8,23 @@ class ApplicationController < ActionController::Base
     end 
 
     def current_user
-        @user = User.find_by_id(session[:user_id])
+        if session.key?("user_id")
+            @user = User.find_by_id(session[:user_id])
+        else 
+            @admin = Admin.find_by_id(session[:admin_id])
+        end 
     end 
 
+    def current_user_type
+        current_user.class.name
+    end
+
     def is_logged_in?
-        !!session[:user_id]
+        if session.key?("user_id")
+            !!session[:user_id]
+        else 
+            !!session[:admin_id]
+        end 
     end 
 
     def logout 

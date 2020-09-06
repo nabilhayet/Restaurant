@@ -1,0 +1,21 @@
+<h2>The information of this cafe :</h2>
+<% @cafes.each do |c| %>
+    Cafe Name :<%= c.name%>
+    <br>
+    <br>
+    Street :<%= c.street%>
+    <br>
+    <br>
+    City :<%= c.city%>
+    <br>
+    <br>
+    State :<%= c.state%>
+    <br>
+    <br>
+    Zipcode :<%= c.zipcode%>
+    <br>
+    <br> 
+    <%= button_to('Edit', edit_admin_cafe_path(@admin, c), :method=>"get") %>
+    <br> 
+    <%= button_to('Delete', admin_cafe_path(@admin, c), :method=>"delete") %>
+<% end %>

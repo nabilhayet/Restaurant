@@ -1,0 +1,38 @@
+<%= form_for [@admin, @cafe] do |f| %>
+    <% if @cafe.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @cafe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <br>
+    <%= f.hidden_field :admin_id %>
+    <br>
+    <br>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <br>
+    <%= f.label :street %>
+    <%= f.text_field :street %>
+    <br>
+    <br>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+    <br>
+    <br>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+    <br>
+    <br>
+    <%= f.label :zipcode %>
+    <%= f.text_field :zipcode %>
+    <br>
+    <br>
+    <%= f.submit %>
+  <% end %>
+  
