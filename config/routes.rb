@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   
   
-  get '/signup' => 'users#new'
-  post '/signup' => 'users#create'
-  get '/login' => 'users#login'
-  post '/login' => 'users#signin'
+  get '/user/signup' => 'users#new'
+  post '/user/signup' => 'users#create'
+  get '/user/login' => 'users#login'
+  post '/user/login' => 'users#signin'
   get '/logout' => 'application#logout'
 
-  get '/registration' => 'admins#new'
-  post '/registration' => 'admins#create'
-  get '/signin' => 'admins#login'
-  post '/signin' => 'admins#signin'
+  get '/admin/signup' => 'admins#new'
+  post '/admin/signup' => 'admins#create'
+  get '/admin/login' => 'admins#login'
+  post '/admin/login' => 'admins#signin'
 
 
   get '/user/home' => 'users#home'
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end 
 
   resources :bookings, only: [:index, :show]
+  resources :cafes, only: [:index, :show]
   
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -32,7 +32,7 @@ class AdminsController < ApplicationController
            session[:admin_id] = @admin.id
            render "show"
          else 
-           redirect_to signin_path 
+           redirect_to admin_login_path 
          end 
        end 
    
