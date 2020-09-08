@@ -1,20 +1,62 @@
-<html>
+<!DOCTYPE html>
+<html >
 <head>
-<link rel="stylesheet" href="application.css">
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Web Template</title>
+    <link rel="stylesheet" href="application.css">
 </head>
 <body>
-    <div class="box">
-    <ul type="none">
-        <li><%= link_to 'Admin', admin_home_path %></li>
-        <li><%= link_to 'User', user_home_path %></li>
-    </ul>
-    </div>
-    <div class="wd">
-        <h1>Welcome</h1>
-        <h4>We give our user the top priority. The website is created to give a user 
-        the best experience. The UI is user friendly and easy to navigate. 
-        To make a reservation a user needs to sign-up or sign-in.</h4>
-    </div>
+   
+<!--   HEADER  -->
+  
+  <header>
+      <div class="head">
+         <h2>Bellyful</h2> 
+      </div>
+<!--    NAVIGATION  -->
+         <nav>
+             <ul>
+                <li><%= link_to 'Home', root_path, :class=> "active" %></li>
+                 <li><%= link_to 'Admin', admin_home_path %></li>
+                 <li><%= link_to 'User', user_home_path %></li>
+                 <li><%= link_to 'News & Events', user_home_path%></li>
+                 <li><%= link_to 'Mail us', user_home_path%></li>
+             </ul>
+         </nav>
+<!--    END OF NAVIGATION  -->
+  </header>
+<!--  END OF HEADER  -->
+
+<!--SHOWCASE-->
+
+    <showcase>
+        <div class="container">
+            <h1>Food tastes better when you eat it with your family</h1>
+            <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
+            <div class="category">
+                <div class="thai">
+                <img src="/assets/thai.jpg" />
+                    <h4>Thai Tanic</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi aut vero sint itaque dignissimos, fugiat ipsum laboriosam </p>
+                </div>
+                <div class="snacks">
+                <img src="/assets/burger.jpg">
+                     <h4>Evening Snacks</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi aut vero sint itaque dignissimos, fugiat ipsum laboriosam </p>
+                </div>
+                <div class="grill">
+                <img src="/assets/gril.jpeg">
+                      <h4>Gochew Grill</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi aut vero sint itaque dignissimos, fugiat ipsum laboriosam </p>
+                </div>
+            </div>
+        </div>
+    </showcase> 
+<!--   END OF SHOWCASE  -->
+     
+       <a href="#"><button class="btn">Read More</button></a>
+                           
+    
 </body>
-</html> 
+</html>
