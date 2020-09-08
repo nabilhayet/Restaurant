@@ -24,17 +24,24 @@ class CafesController < ApplicationController
     end 
 
     def new 
+      if current_user_type != "User"
         if is_logged_in?
             @admin = current_user 
-            @cafe = @admin.cafes.build
+            @cafe = @admin.cafes.build 
+
+
         else 
             redirect_to signin_path 
         end 
+      else 
+          redirect_to user_login_path
+      end 
     end 
 
     def create 
         @admin = current_user 
         @cafe = Cafe.new(cafe_params)
+       
         if @cafe.save
           redirect_to admin_cafe_path(@admin, @cafe)
         else
@@ -77,6 +84,6 @@ class CafesController < ApplicationController
     private
 
   def cafe_params
-    params.require(:cafe).permit(:name, :street, :city, :state, :zipcode, :admin_id)
+    params.require(:cafe).permit(:name, :street, :city, :state, :zipcode, :admin_id, foods_attributes: [:name,:category,:price,:fat,:calories])
   end
 end

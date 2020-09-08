@@ -33,6 +33,24 @@
     <%= f.text_field :zipcode %>
     <br>
     <br>
+    <%= f.fields_for :foods, @cafe.foods.build do |foods_fields| %>
+      <%= foods_fields.label :name %>
+      <%= foods_fields.text_field :name %>
+      <br>
+      <%= foods_fields.label :category %>
+      <%= foods_fields.text_field :category %>
+      <br>
+      <%= foods_fields.label :price %>
+      <%= foods_fields.text_field :price %>
+      <br>
+      <%= foods_fields.label :fat %>
+      <%= foods_fields.text_field :fat %>
+      <br>
+      <%= foods_fields.label :calories %>
+      <%= foods_fields.text_field :calories %>
+    <% end %>
+
+
     <%= f.submit %>
   <% end %>
   

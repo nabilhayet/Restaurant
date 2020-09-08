@@ -10,8 +10,10 @@ class ApplicationController < ActionController::Base
     def current_user
         if session.key?("user_id")
             @user = User.find_by_id(session[:user_id])
+            @user 
         else 
             @admin = Admin.find_by_id(session[:admin_id])
+            @admin 
         end 
     end 
 

@@ -12,3 +12,16 @@ State :<%= @cafe.state%>
 <br>
 <br>
 Zipcode :<%= @cafe.zipcode%>
+<hr>
+<h3>The food items are :</h3>
+<% @cafe.foods.each do |f| %>
+Food Item : <%= f.name%>
+<br>
+Food Category : <%= f.category%>
+<br>
+Food price : <%= f.price%>
+<br>
+Food Fat : <%= f.fat%>%
+<br>
+Food Calories : <%= f.calories%>%
+<% end %>

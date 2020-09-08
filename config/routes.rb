@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  
   get '/user/signup' => 'users#new'
   post '/user/signup' => 'users#create'
   get '/user/login' => 'users#login'
@@ -27,6 +26,8 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index, :show]
   resources :cafes, only: [:index, :show]
+  resources :cafes_food
+  resources :foods
   
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

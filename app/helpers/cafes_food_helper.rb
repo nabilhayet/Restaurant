@@ -1,0 +1,2 @@
+module CafesFoodHelper
+end
