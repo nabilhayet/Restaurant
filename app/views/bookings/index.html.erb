@@ -1,24 +1,87 @@
-<% @user.bookings.each do |b|%>
-    <div>
-   Full Name :  <%= b.user.first_name %> <%= b.user.last_name %>
-   <br> 
-   <br> 
-   Cafe name : <%= b.cafe.name %> 
-   <br> 
-   <br> 
-   Booking Date : <%= b.date %> 
-   <br>
-   <br> 
-   Booking Time : <%= b.time %>
-   <br>
-   <br> 
-   Booking Table : <%= b.table_num %>
-   <br>
-   <br> 
-   <%= button_to('Edit', edit_user_booking_path(@user, b), :method=>"get") %>
-   <br> 
-   <%= button_to('Delete', user_booking_path(@user, b), :method=>"delete") %>
-   </div> 
-   <br>
-   <br>
-   <% end  %> 
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Web Template</title>
+    <link rel="stylesheet" href="application.css">
+</head>
+<body>
+   
+<!--   HEADER  -->
+  
+  <header>
+      <div class="head">
+         <h2>Bellyful</h2> 
+      </div>
+<!--    NAVIGATION  -->
+         <nav>
+         <ul>
+         <li><%= link_to 'Profile', user_path(@user), :class=> "active" %></li>
+         <li><%= link_to 'Make a booking', new_user_booking_path(@user) %></li>
+         <li><%= link_to 'Logout', logout_path %></li>
+         <li><%= link_to 'View all bookings', user_bookings_path(@user) %></li>
+       </ul>
+       </nav>
+       <!--    END OF NAVIGATION  -->
+         </header>
+       <!--  END OF HEADER  -->
+       <h3>Welcome <%= @user.first_name%> <%= @user.last_name%> to your homepage!</h3>
+       <!--SHOWCASE-->
+       
+           <showcase>
+               <div class="container">
+                   <h1>Food tastes better when you eat it with your family</h1>
+                   <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
+                   <div class="category">
+                       <div class="content">
+                       <h2>The information of this cafe :</h2>
+                       <table class="content-table">
+                                   <thead>
+                                       <tr>
+                                       <th>User First Name</th>
+                                       <th>User Last Name</th>
+                                       <th>Booking Date</th>
+                                       <th>Booking Time</th>
+                                       <th>Booking Table Num</th>
+                                       <th>Edit</th>
+                                       <th>Delete</th>
+                                       </tr>
+                                   </thead>
+                                   <% @user.bookings.each do |b|%>
+                                   <tbody>
+                                       <tr>
+                                       <td><%= b.user.first_name%></td>
+                                       <td><%=b.user.last_name%></td>
+                                       <td><%=b.date%></td>
+                                       <td><%=b.time%></td>
+                                       <td><%=b.table_num%></td>
+                                       <td><%= button_to('Edit', edit_user_booking_path(@user, b), :method=>"get") %></td>
+                                       <td><%= button_to('Delete', user_booking_path(@user, b), :method=>"delete") %></td>
+                                       </tr>
+                                   </tbody>
+                                   <% end %>
+                               </table>
+                             
+                       </div>
+                   </div>
+               </div>
+           </showcase> 
+       <!--   END OF SHOWCASE  -->
+       
+       </body>
+       </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

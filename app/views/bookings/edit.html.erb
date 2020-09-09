@@ -1,20 +1,75 @@
-<%= form_for [@user, @booking] do |f| %>
-    <h3>Select a cafe from the available options</h3> 
-    <%= f.collection_radio_buttons :cafe_id, Cafe.all, :id, :name %>
-    <%= f.hidden_field :user_id %>
-    <br>
-    <br>
-    <label>Booking Date:</label>
-    <%= f.date_field :date %>
-    <br>
-    <br>
-    <label>Booking Time</label><br>
-    <%= f.time_field :time %>
-    <br>
-    <br>
-    <label>Booking Table</label><br>
-    <%= f.select :table_num, (0..10) %>
-    <br>
-    <br>
-    <%= f.submit %>
-  <% end %>
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Web Template</title>
+    <link rel="stylesheet" href="application.css">
+</head>
+<body>
+   
+<!--   HEADER  -->
+  
+  <header>
+      <div class="head">
+         <h2>Bellyful</h2> 
+      </div>
+<!--    NAVIGATION  -->
+        <nav>
+         <ul>
+          <li><%= link_to 'Profile', user_path(@user), :class=> "active" %></li>
+          <li><%= link_to 'Make a booking', new_user_booking_path(@user) %></li>
+          <li><%= link_to 'Logout', logout_path %></li>
+          <li><%= link_to 'View all bookings', user_bookings_path(@user) %></li>
+        </ul>
+      </nav>
+<!--    END OF NAVIGATION  -->
+  </header>
+<!--  END OF HEADER  -->
+<h3>Welcome <%= @user.first_name %> <%= @user.last_name %> to your homepage!</h3>
+<!--SHOWCASE-->
+
+    <showcase>
+        <div class="container">
+            <h1>Food tastes better when you eat it with your family</h1>
+            <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
+            <div class="category">
+              <%= form_for [@user, @booking] do |f| %>
+                <% if @booking.errors.any? %>
+                <div id="error_explanation">
+                  <h2>There were some errors:</h2>
+                  <ul>
+                    <% @booking.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <% end %>
+                <div class="content">
+                <h3>Select a cafe from the available options</h3> 
+                <%= f.collection_radio_buttons :cafe_id, Cafe.all, :id, :name %>
+                <%= f.hidden_field :user_id %>
+                <br>
+                <br>
+                <label>Booking Date:</label>
+                <%= f.date_field :date %>
+                <br>
+                <br>
+                <label>Booking Time</label><br>
+                <%= f.time_field :time %>
+                <br>
+                <br>
+                <label>Booking Table</label><br>
+                <%= f.select :table_num, (0..10) %>
+                <br>
+                <br>
+                <%= f.button "Make a Reservation", :class => 'btn' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+</showcase> 
+<!--   END OF SHOWCASE  -->
+
+</body>
+</html>
