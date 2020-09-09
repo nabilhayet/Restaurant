@@ -1,39 +1,85 @@
-<h2>Welcome to our Sign-up page!</h2> 
-<%= form_for @user, url: '/user/signup' do |f| %>
-    <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>There were some errors:</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
-
-  
-    First Name: <%= f.text_field :first_name %>
-    <br>
-    <br>
-    
-    Last Name: <%= f.text_field :last_name %> 
-    <br>
-    <br>
-  
-   Email: <%= f.text_field :email %>
-   <br>
-   <br>
-    
-   Password: <%= f.password_field :password %>
-    <br>
-    <br>
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Web Template</title>
+    <link rel="stylesheet" href="application.css">
+</head>
+<body>
    
-    Password Confirmation: <%= f.password_field :password_confirmation %>
-    <br>
-    <br>
+<!--   HEADER  -->
+  
+  <header>
+      <div class="head">
+      </div>
+<!--    NAVIGATION  -->
+         <nav>
+             <ul>
+                <li><%= link_to 'Home', root_path, :class=> "active" %></li>
+                <li><%= link_to 'Signup', user_signup_path %></li>
+                <li><%= link_to 'Login', user_login_path %></li>
+             </ul>
+         </nav>
+<!--    END OF NAVIGATION  -->
+  </header>
+<!--  END OF HEADER  -->
+<h3>Welcome to our Sign-up page!</h3> 
+<!--SHOWCASE-->
+
+    <showcase>
+        <div class="container">
+            <h1>Food tastes better when you eat it with your family</h1>
+            <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
+            <div class="category">
+            <%= form_for @user, url: '/user/signup' do |f| %>
+              <% if @user.errors.any? %>
+                <div id="error_explanation">
+                  <h2>There were some errors:</h2>
+                  <ol>
+                    <% @user.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ol>
+                </div>
+              <% end %>
+            <br>
+            <br>
+            <div class="content">
+            <%= f.label :first_name %>
+             <%= f.text_field :first_name %>
+            <br>
+            <br>
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name %> 
+            <br>
+            <br>
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+            <br>
+            <br>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+            <br>
+            <br>
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation %>
+            <br>
+            <br>
+            <%= f.label :contact %>
+            <%= f.text_field :contact %> 
+            <br>
+            <br>
+           
+            <%= f.button "Sign-up", :class => 'btn' %>
+            
+            <% end %>
+            </div> 
+            </div>
+        </div>
+    </showcase> 
+<!--   END OF SHOWCASE  -->
+                           
     
-    Contact: <%= f.text_field :contact %> 
-    <br>
-    <br>
-    <%= f.submit "Submit" %>
-  <% end %>
+</body>
+</html>

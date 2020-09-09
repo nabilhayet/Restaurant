@@ -96,11 +96,80 @@
         }
         
         .btn{
+            /* background-color: #05A081; */
             background-color: gold;
-            padding: 1rem;
             border: none;
             border-radius: 8px;
             margin-left: 45%;
         }
-        
-    
+
+        #error_explanation{
+            background-color: red;
+            margin-top: 10px;
+            margin-left: 20px;
+
+        }
+
+        h3{
+            color: #fff;
+            font-family: cursive;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .content{
+            margin-left:300px;
+            
+        }
+
+        label{
+            color:yellow;
+        }
+
+
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+          }
+          
+          .content-table thead tr {
+            background-color: #009879;
+            /* color: #ffffff; */
+            color:gold;
+            text-align: left;
+            font-weight: bold;
+          }
+
+          .content-table tbody tr {
+            background-color: white;
+            color:black;
+          }
+          
+          .content-table th,
+          .content-table td {
+            padding: 12px 15px;
+          }
+          
+          .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+          }
+          
+          .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3; 
+            
+          }
+          
+          .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+          }
+          
+          .content-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+          }
+          

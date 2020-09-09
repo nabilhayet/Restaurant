@@ -1,9 +1,55 @@
-<%= form_for @admin, url: '/admin/login' do |f| %>
-    Email: <%= f.text_field :email %> 
-    <br>
-    <br>
-    Password: <%= f.password_field :password %>
-    <br>
-    <br>
-    <%= f.submit "Submit" %>
-  <% end %>
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Web Template</title>
+    <link rel="stylesheet" href="application.css">
+</head>
+<body>
+   
+<!--   HEADER  -->
+  
+  <header>
+      <div class="head">
+      </div>
+<!--    NAVIGATION  -->
+         <nav>
+             <ul>
+             <li><%= link_to 'Home', root_path, :class=> "active" %></li>
+             <li><%= link_to 'Signup', admin_signup_path %></li>
+             <li><%= link_to 'Login', admin_login_path %></li>
+             </ul>
+         </nav>
+<!--    END OF NAVIGATION  -->
+  </header>
+<!--  END OF HEADER  -->
+<h3>Welcome to our Login page!</h3> 
+<!--SHOWCASE-->
+
+    <showcase>
+        <div class="container">
+            <h1>Food tastes better when you eat it with your family</h1>
+            <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
+            <div class="category">
+              <%= form_for @admin, url: '/admin/login' do |f| %>
+                <div class="content">
+                <%= f.label :email %>
+                <%= f.text_field :email %> 
+                <br>
+                <br>
+                <%= f.label :password %>
+                <%= f.password_field :password %>
+                <br>
+                <br>
+                <%= f.button "Login", :class => 'btn' %>
+              <% end %>
+              </div> 
+           </div>
+        </div>
+    </showcase> 
+<!--   END OF SHOWCASE  -->
+                           
+    
+</body>
+</html>

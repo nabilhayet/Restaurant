@@ -1,21 +1,73 @@
-<h2>The information of this cafe :</h2>
-<% @cafes.each do |c| %>
-    Cafe Name :<%= c.name%>
-    <br>
-    <br>
-    Street :<%= c.street%>
-    <br>
-    <br>
-    City :<%= c.city%>
-    <br>
-    <br>
-    State :<%= c.state%>
-    <br>
-    <br>
-    Zipcode :<%= c.zipcode%>
-    <br>
-    <br> 
-    <%= button_to('Edit', edit_admin_cafe_path(@admin, c), :method=>"get") %>
-    <br> 
-    <%= button_to('Delete', admin_cafe_path(@admin, c), :method=>"delete") %>
-<% end %>
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Web Template</title>
+    <link rel="stylesheet" href="application.css">
+</head>
+<body>
+   
+<!--   HEADER  -->
+  
+  <header>
+      <div class="head">
+         <h2>Bellyful</h2> 
+      </div>
+<!--    NAVIGATION  -->
+         <nav>
+             <ul>
+                <li><%= link_to 'Profile', admin_path(@admin), :class=> "active" %></li>
+                <li><%= link_to 'Add a Cafe', new_admin_cafe_path(@admin) %></li>
+                <li><%= link_to 'Logout', logout_path %></li>
+                <li><%= link_to 'View all cafes', admin_cafes_path(@admin)%></li>
+             </ul>
+         </nav>
+<!--    END OF NAVIGATION  -->
+  </header>
+<!--  END OF HEADER  -->
+<h3>Welcome <%= @admin.name%> to your homepage!</h3>
+<!--SHOWCASE-->
+
+    <showcase>
+        <div class="container">
+            <h1>Food tastes better when you eat it with your family</h1>
+            <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
+            <div class="category">
+                <div class="content">
+                <h2>The information of this cafe :</h2>
+                <table class="content-table">
+                            <thead>
+                                <tr>
+                                <th>Cafe Name</th>
+                                <th>Street</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>Zipcode</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <% @cafes.each do |c| %>
+                            <tbody>
+                                <tr>
+                                <td><%= c.name %></td>
+                                <td><%=c.street%></td>
+                                <td><%=c.city%></td>
+                                <td><%=c.state%></td>
+                                <td><%=c.zipcode%></td>
+                                <td><%= button_to('Edit', edit_admin_cafe_path(@admin, c), :method=>"get") %></td>
+                                <td><%= button_to('Delete', admin_cafe_path(@admin, c), :method=>"delete") %></td>
+                                </tr>
+                            </tbody>
+                            <% end %>
+                        </table>
+                      
+                </div>
+            </div>
+        </div>
+    </showcase> 
+<!--   END OF SHOWCASE  -->
+
+</body>
+</html>
