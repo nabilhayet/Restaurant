@@ -84,6 +84,6 @@ class CafesController < ApplicationController
     private
 
   def cafe_params
-    params.require(:cafe).permit(:name, :street, :city, :state, :zipcode, :admin_id, foods_attributes: [:name,:category,:price,:fat,:calories])
+    params.require(:cafe).permit(:name, :street, :city, :state, :zipcode, :admin_id)
   end
 end

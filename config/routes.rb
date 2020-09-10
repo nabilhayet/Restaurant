@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/user/home' => 'users#home'
   get '/admin/home' => 'admins#home'
   root 'application#welcome'
+  get '/auth/github/callback' => 'users#signin'
 
   resources :admins, only: [:show] do 
     resources :cafes, only: [:index, :show, :new, :create, :update, :edit, :destroy]

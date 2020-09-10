@@ -13,4 +13,8 @@ class User < ApplicationRecord
     validates :contact, presence: true
     validates :contact, length: { is: 10 }
     validates :contact, numericality: { only_integer: true }
+
+    def full_name 
+        self.first_name + " " +self.last_name 
+    end 
 end

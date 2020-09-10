@@ -67,34 +67,12 @@
             <br>
             <%= f.label :zipcode %>
             <%= f.text_field :zipcode %>
-            <hr>
-            <hr>
-            <h3> To add a new food item fill out the fields below :</h3>
-              <%= f.fields_for :foods, @cafe.foods.build do |foods_fields| %>
-                <%= foods_fields.label :name %>
-                <%= foods_fields.text_field :name %>
-                <br>
-                <br>
-                <%= foods_fields.label :category %>
-                <%= foods_fields.text_field :category %>
-                <br>
-                <br>
-                <%= foods_fields.label :price %>
-                <%= foods_fields.text_field :price %>
-                <br>
-                <br>
-                <%= foods_fields.label :fat %>
-                <%= foods_fields.text_field :fat %>
-                <br>
-                <br>
-                <%= foods_fields.label :calories %>
-                <%= foods_fields.text_field :calories %>
-              <% end %>
-              <br>
-              <br>
-              <%= f.button "Edit Cafe", :class => 'btn' %>
-            <% end %>
+            <br>
+            <br>
+            <%= f.button "Add Cafe", :class => 'btn' %>
             </div>
+          <% end %> 
+           
             </div>
         </div>
     </showcase> 
@@ -102,8 +80,6 @@
     
 </body>
 </html>
-
-
 
 
 

@@ -33,6 +33,14 @@
                <div class="container">
                    <h1>Food tastes better when you eat it with your family</h1>
                    <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
+                   <div>
+                    <h3>Filter bookings:</h3>
+                    <%= form_tag(user_bookings_path(@user), method: "get") do %>
+                        <%= select_tag "date", options_for_select(["Date"]), include_blank: true %>
+                        <%= select_tag "table_num", options_for_select(["Table_Num"]), include_blank: true %>
+                    <%= submit_tag "Filter" %>
+                    <% end %>
+                    </div>
                    <div class="category">
                        <div class="content">
                        <h3>The information of this cafe :</h3>

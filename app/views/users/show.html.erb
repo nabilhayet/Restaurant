@@ -26,7 +26,13 @@
 <!--    END OF NAVIGATION  -->
   </header>
 <!--  END OF HEADER  -->
-<h3>Welcome <%= @user.first_name%> <%= @user.last_name%> to your homepage!</h3>
+
+    <% if session[:user_id] %>
+        <h1><%= @user.full_name %></h1>
+    <% else %>
+        <h3>Welcome <%= @user.full_name %> to your homepage!</h3>
+    <% end %>
+
 <!--SHOWCASE-->
 
     <showcase>

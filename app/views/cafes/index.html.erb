@@ -46,6 +46,8 @@
                                 <th>Zipcode</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
+                                <th>View Menu</th>
+                                <th>Add Menu Item</th>
                                 </tr>
                             </thead>
                             <% @cafes.each do |c| %>
@@ -58,6 +60,8 @@
                                 <td><%=c.zipcode%></td>
                                 <td><%= button_to('Edit', edit_admin_cafe_path(@admin, c), :method=>"get") %></td>
                                 <td><%= button_to('Delete', admin_cafe_path(@admin, c), :method=>"delete") %></td>
+                                <td><%= button_to('View Menu', foods_path, :method=>"get") %></td>
+                                <td><%= button_to('Add Menu', new_food_path, :method=>"get") %></td>
                                 </tr>
                             </tbody>
                             <% end %>
