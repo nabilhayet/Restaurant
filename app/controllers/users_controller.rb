@@ -27,8 +27,7 @@ class UsersController < ApplicationController
     end 
 
     def signin
-        binding.pry 
-        if auth.present? && auth.has_key?("uid")
+        if auth_hash = request.env["omniauth.auth"]
             @user = User.find_or_create_by(uid: auth['uid']) do |u|
                 u.name = auth['info']['name']
                 u.email = auth['info']['email']

@@ -39,32 +39,23 @@
                 <table class="content-table">
                             <thead>
                                 <tr>
-                                <th>Cafe Name</th>
-                                <th>Street</th>
-                                <th>State</th>
-                                <th>City</th>
-                                <th>Zipcode</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                                <th>View Menu</th>
-                                <th>Add Menu Item</th>
+                                <th>Food Name</th>
+                                <th>Food Category</th>
+                                <th>Food Price</th>
+                                <th>Food Fat</th>
+                                <th>Food Calories</th>
                                 </tr>
                             </thead>
-                            <% @cafes.each do |c| %>
                             <tbody>
                                 <tr>
-                                <td><%= c.name %></td>
-                                <td><%=c.street%></td>
-                                <td><%=c.city%></td>
-                                <td><%=c.state%></td>
-                                <td><%=c.zipcode%></td>
-                                <td><%= button_to('Edit', edit_admin_cafe_path(@admin, c), :method=>"get") %></td>
-                                <td><%= button_to('Delete', admin_cafe_path(@admin, c), :method=>"delete") %></td>
-                                <td><%= button_to('View Menu', cafe_foods_path(c), :method=>"get") %></td>
-                                <td><%= button_to('Add Menu', new_cafe_food_path(c), :method=>"get") %></td>
+                                <td><%= @food.name %></td>
+                                <td><%= @food.category%></td>
+                                <td><%= @food.price%></td>
+                                <td><%= @food.fat%></td>
+                                <td><%= @food.calories%></td>
                                 </tr>
                             </tbody>
-                            <% end %>
+                            
                         </table>
                       
                 </div>
@@ -75,3 +66,12 @@
 
 </body>
 </html>
+
+
+    
+
+
+
+
+
+

@@ -5,16 +5,10 @@ class BookingsController < ApplicationController
         if params[:user_id]
           @user = current_user
           @bookings = User.find(params[:user_id]).bookings
-          if !params[:date].blank?
-            @bookings = Booking.with_date
-          elsif !params[:table_num].blank?
-            @bookings = Booking.with_table_num
-          else 
-            @bookings = Booking.all 
-             
-          end 
+          filtering_with_date_or_table_num
         else
             @bookings = Booking.all 
+            filtering_with_date_or_table_num
         end
       else 
           redirect_to login_path 
@@ -86,4 +80,14 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:cafe_id, :user_id, :date, :time, :table_num)
   end
+
+  def filtering_with_date_or_table_num
+    if !params[:date].blank?
+      @bookings = Booking.with_date
+    elsif !params[:table_num].blank?
+      @bookings = Booking.with_table_num
+    else 
+      @bookings = Booking.all 
+    end 
+  end 
 end

@@ -56,10 +56,10 @@
                                        <th>Delete</th>
                                        </tr>
                                    </thead>
-                                   <% @user.bookings.each do |b|%>
+                                   <% @bookings.each do |b|%>
                                    <tbody>
                                        <tr>
-                                       <td><%= b.user.first_name%></td>
+                                       <td><%= b.user.first_name%></td>q
                                        <td><%=b.user.last_name%></td>
                                        <td><%=b.date%></td>
                                        <td><%=b.time%></td>

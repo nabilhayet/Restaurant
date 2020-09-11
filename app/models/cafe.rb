@@ -4,7 +4,7 @@ class Cafe < ApplicationRecord
     has_many :cafe_foods
     has_many :foods, through: :cafe_foods
     belongs_to :admin
-    # accepts_nested_attributes_for :foods
+    accepts_nested_attributes_for :foods
 
     validates :name, presence: true
     validates :name, uniqueness: true

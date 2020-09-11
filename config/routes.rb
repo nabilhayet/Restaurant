@@ -14,11 +14,16 @@ Rails.application.routes.draw do
 
   get '/user/home' => 'users#home'
   get '/admin/home' => 'admins#home'
-  root 'application#welcome'
   get '/auth/github/callback' => 'users#signin'
+  root 'application#welcome'
 
   resources :admins, only: [:show] do 
     resources :cafes, only: [:index, :show, :new, :create, :update, :edit, :destroy]
+
+  end 
+
+  resources :cafes, only: [:show] do
+    resources :foods, only: [:index, :show, :new, :create, :update, :edit, :destroy]
   end 
 
     resources :users, only: [:show] do 
