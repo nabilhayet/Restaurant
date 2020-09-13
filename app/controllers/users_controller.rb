@@ -27,22 +27,24 @@ class UsersController < ApplicationController
     end 
 
     def signin
-        if auth_hash = request.env["omniauth.auth"]
-            @user = User.find_or_create_by(uid: auth['uid']) do |u|
-                u.name = auth['info']['name']
-                u.email = auth['info']['email']
-            end
-           session[:user_id] = @user.id
-           ender 'show'
-        else 
             @user = User.find_by(email: params[:user][:email])
-            if @user && @user.authenticate(params[:user][:password])
+                if @user && @user.authenticate(params[:user][:password])
                     session[:user_id] = @user.id
                     render "show"
                 else 
                     redirect_to user_login_path 
                 end 
-        end 
+        
+    end 
+
+    def github
+        binding.pry 
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+            u.name = auth['info']['name']
+            u.email = auth['info']['email']
+        end
+        session[:user_id] = @user.id
+        render 'show'
     end 
 
     private 

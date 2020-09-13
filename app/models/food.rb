@@ -11,12 +11,4 @@ class Food < ApplicationRecord
     validates :calories, numericality: { only_integer: true }
     validates :price, numericality: { only_integer: true }
 
-    def cafe_name=(name)
-        self.cafes = Cafe.find_or_create_by(name: name)
-      end
-    
-      def cafe_name
-         self.cafes.last ? self.cafes.last.name : nil
-      end
-
 end

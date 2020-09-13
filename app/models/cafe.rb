@@ -17,11 +17,5 @@ class Cafe < ApplicationRecord
     validates :zipcode, numericality: { only_integer: true }
     validates :zipcode, length: { is: 5 }
 
-    # def foods_attributes=(food_attributes)
-    #     food_attributes.values.each do |food_attribute|
-    #       food = Food.find_or_create_by(food_attribute)
-    #       self.foods << food 
-    #     end
-    #   end
     
 end

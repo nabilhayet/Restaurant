@@ -41,9 +41,8 @@ class CafesController < ApplicationController
     def create 
         @admin = current_user 
         @cafe = Cafe.new(cafe_params)
-       
         if @cafe.save
-          redirect_to admin_cafe_path(@admin, @cafe)
+          render "show"
         else
           render :new
         end
@@ -84,6 +83,6 @@ class CafesController < ApplicationController
     private
 
   def cafe_params
-    params.require(:cafe).permit(:name, :street, :city, :state, :zipcode, :admin_id)
+    params.require(:cafe).permit(:admin_id, :name, :street, :city, :state, :zipcode)
   end
 end
