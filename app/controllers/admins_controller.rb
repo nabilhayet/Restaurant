@@ -9,18 +9,28 @@ class AdminsController < ApplicationController
    
        def create
            @admin = Admin.new(admin_params)
-              
-               if @admin.valid?
+              if @admin.valid?
                    @admin.save
-                   redirect_to admin_path(@admin)
-               else
-                   render "new"
-               end 
-       end 
+                   session[:admin_id] = @admin.id
+                    redirect_to admin_path(@admin)
+                else
+                    render "new"
+                end 
+        end 
    
-       def show
-           @admin = Admin.find_by(params[:id])
-       end 
+        def show
+            if is_logged_in?
+                if current_user_type != "User"
+                  @admin = current_user
+                  render "show"
+                else
+                  @user = current_user
+                  redirect_to user_path(@user)
+                end
+            else
+                redirect_to '/'
+            end
+        end 
    
        def login
            @admin = Admin.new 

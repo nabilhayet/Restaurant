@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="application.css">
 </head>
 <body>
-   
+<h3>Welcome <%= @user.name %> to your homepage!</h3>
+
 <!--   HEADER  -->
   
   <header>
@@ -17,7 +18,8 @@
 <!--    NAVIGATION  -->
          <nav>
              <ul>
-                <li><%= link_to 'Profile', user_path(@user), :class=> "active" %></li>
+             <% binding.pry %> 
+                <li><%= link_to 'Profile', user_profile_path, :class=> "active" %></li>
                 <li><%= link_to 'Make a booking', new_user_booking_path(@user) %></li>
                 <li><%= link_to 'Logout', logout_path %></li>
                 <li><%= link_to 'View all bookings', user_bookings_path(@user) %></li>
@@ -26,13 +28,7 @@
 <!--    END OF NAVIGATION  -->
   </header>
 <!--  END OF HEADER  -->
-
-    <% if session[:user_id] %>
-        <h1><%= @user.full_name %></h1>
-    <% else %>
-        <h3>Welcome <%= @user.full_name %> to your homepage!</h3>
-    <% end %>
-
+    
 <!--SHOWCASE-->
 
     <showcase>
