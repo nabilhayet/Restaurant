@@ -30,27 +30,17 @@ class FoodsController < ApplicationController
     def create
         if is_logged_in?
             @admin = current_user 
-            @food = Food.find_by(name: params[:food][:name])
-            @cafe = Cafe.find_by_id(params[:food][:cafe_ids].last)
-                @cafe_food = CafeFood.all.select do |cf|
-                    (cf.cafe_id==@cafe.id && cf.food_id==@food.id)
+            @food = Food.new(food_params)
+            binding.pry 
+                if @food.save
+                    redirect_to food_path(@food)
+                else
+                    render :new
                 end 
-            if @cafe_food.empty?
-                render "new"
-            else 
-                @food = Food.new(food_params)
-                    if @food.save
-                        render "show"
-                    else
-                        render :new
-                    end
-            end 
-        else 
+        else        
             redirect_to login_path
         end 
-        
     end 
-
 
     def edit
 
@@ -67,6 +57,6 @@ class FoodsController < ApplicationController
     private
 
     def food_params
-        params.require(:food).permit(:cafe_ids, :name, :category, :price, :fat, :calories)
+        params.require(:food).permit(:cafe_id, :name, :category, :price, :fat, :calories)
     end
 end

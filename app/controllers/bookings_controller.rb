@@ -19,6 +19,9 @@ class BookingsController < ApplicationController
       if is_logged_in?
         @user = current_user
         @booking = Booking.find_by(params[:id])
+        if @booking.user != @user 
+            redirect_to user_profile_path
+        end 
       else 
         redirect_to login_path 
       end 

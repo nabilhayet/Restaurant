@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get '/user/home' => 'users#home'
   get '/admin/home' => 'admins#home'
-  get '/auth/github/callback' => 'users#github'
+  get '/auth/facebook/callback' => 'users#github'
   root 'application#welcome'
 
   resources :admins, only: [:show] do 

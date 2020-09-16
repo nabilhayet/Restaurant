@@ -36,13 +36,14 @@ class UsersController < ApplicationController
 
     def github
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
-            
+            u.uid = auth['uid']
             u.name = auth['info']['name']
             u.email = auth['info']['email']
-            u.password_digest = auth['info']['password']
+            u.password = SecureRandom.hex(10)
+            u.contact = rand.to_s[2..11]
+
         end
         session[:user_id] = @user.id
-        binding.pry 
         render "profile"
     end 
 
@@ -55,7 +56,6 @@ class UsersController < ApplicationController
         if is_logged_in?
             if current_user_type != "Admin"
               @user = current_user
-              binding.pry 
               render "profile"
             else
               @admin = current_user
