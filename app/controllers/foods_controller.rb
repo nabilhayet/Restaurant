@@ -1,82 +1,96 @@
 class FoodsController < ApplicationController
 
-    def index 
-        if is_logged_in? 
-              @admin = current_user
-              @cafe = @admin.cafes.find_by_id(params[:cafe_id])
-              @foods = @cafe.foods 
-        else 
-            redirect_to root_path 
-        end 
-    end
-
-    def show
-        @admin = current_user 
-        @cafe = @admin.cafes.find_by_id(params[:cafe_id]) 
-        @food = Food.find_by_id(params[:id])
-    end 
-
-    def new 
+    def index
         if is_logged_in?
-            @admin = current_user 
-            @food = Food.new 
+          @admin = current_user
+          if params[:admin_id]
+            @foods = Admin.find(params[:admin_id]).foods 
+          else
+            @foods = @admin.foods 
+          end
         else 
-            redirect_to login_path 
+            redirect_to admin_login_path 
         end 
-    end 
-
-    def create
-        if is_logged_in?
-            @admin = current_user 
-            @food = Food.new(food_params)
-                if @food.save
-                    redirect_to food_path(@food)
-                else
-                    render :new
-                end 
-        else        
-            redirect_to login_path
-        end 
-    end 
-
-    def edit
-        if current_user_type != "User"
-            if is_logged_in?
-               @admin = current_user
-               @food = Food.find_by_id(params[:id])
-                 if @apt!=nil && @apt.patient_id == @patient.id
-                    @doctor = Doctor.all
-                    erb :'appointments/patient/edit'
-                 else
-                   flash.next[:message] = "You have no appointment to update of this number"
-                   redirect '/profile/patient'
-                 end
-             else
-               redirect '/'
-             end
-           else
-             redirect '/profile/doctor'
-           end
-    end 
-
-    def update
-        @admin = current_user 
-        @food = Food.find(params[:id])
-        @food.update(food_params)
-        redirect_to redirect_to food_path(@food)
       end
-
-    def destroy 
-      @admin = current_user 
-      @food = Food.find(params[:id])
-      @food.delete
-      redirect_to foods_path
-      
-    end 
-
+  
+      def show 
+        if is_logged_in?
+          @admin = current_user
+          @food = Food.find_by(params[:id])
+          binding.pry 
+          if @food.admin != @admin
+              redirect_to admin_profile_path
+          end 
+        else 
+          redirect_to admin_login_path 
+        end 
+      end 
+  
+      def new 
+        if is_logged_in?
+          @admin = current_user 
+          @food = @admin.foods.build
+        else 
+          redirect_to admin_login_path 
+        end 
+      end 
+  
+      def create
+          @admin = current_user 
+          @food = Food.new(food_params)
+          binding.pry 
+          if @food.save
+            redirect_to admin_food_path(@admin, @food)
+          else
+            render :new
+          end
+      end
+  
+      def edit
+        if is_logged_in?
+          if params[:admin_id]
+            @admin = Admin.find_by(id: params[:admin_id])
+            if @admin.nil?
+              redirect_to admin_profile_path, alert: "Admin not found."
+            else
+              @food = @admin.foods.find_by(id: params[:id])
+              redirect_to admin_foods_path(@admin), alert: "Food not found." if @food.nil?
+            end
+          else
+            @admin = current_user
+            @food = Food.find(params[:id])
+              if @food.admin != @admin
+                redirect_to admin_profile_path
+              end 
+          end
+        else 
+          redirect_to admin_login_path 
+        end 
+      end
+  
+        def update
+          @admin = current_user 
+          @food = Food.find(params[:id])
+          @food.update(food_params)
+          redirect_to admin_food_path(@admin, @food)
+        end
+  
+      def destroy 
+        if is_logged_in?
+          @admin = current_user 
+          @food = Food.find(params[:id])
+          @food.delete
+          redirect_to admin_foods_path(@admin)
+        else 
+          redirect_to admin_login_path
+        end 
+      end 
+  
+   
+  
     private
 
     def food_params
-        params.require(:food).permit(:name, :category, :price, :fat, :calories)
+        params.require(:food).permit(:name, :category, :fat, :calories)
     end
 end

@@ -30,6 +30,7 @@ class AdminsController < ApplicationController
       else
         redirect_to '/'
       end
+    end 
    
     def login
       @admin = Admin.new 

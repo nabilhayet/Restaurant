@@ -21,7 +21,8 @@
                 <li><%= link_to 'Add a Cafe', new_admin_cafe_path(@admin) %></li>
                 <li><%= link_to 'Logout', logout_path %></li>
                 <li><%= link_to 'View all cafes', admin_cafes_path(@admin)%></li>
-                <li><%= link_to 'Add new food', new_food_path%></li>
+                <li><%= link_to 'Add new food', new_admin_food_path(@admin)%></li>
+                <li><%= link_to 'View all foods', admin_foods_path(@admin)%></li>
              </ul>
          </nav>
 <!--    END OF NAVIGATION  -->
@@ -57,8 +58,7 @@
                                 <td><%=food.price%></td>
                                 <td><%=food.fat%></td>
                                 <td><%=food.calories%></td>
-                                <td><%= button_to('Edit', edit_food_path(food), :method=>"get") %></td>
-                                <td><%= button_to('Delete', food_path(food), :method=>"delete") %></td>
+                                
                                 </tr>
                             </tbody>
                             <% end %>

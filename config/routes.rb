@@ -21,21 +21,21 @@ Rails.application.routes.draw do
 
   resources :admins, only: [:show] do 
     resources :cafes, only: [:index, :show, :new, :create, :update, :edit, :destroy]
-
   end 
 
-  resources :cafes, only: [:show] do
+  resources :users, only: [:show] do 
+      resources :bookings, only: [:index, :show, :new, :create, :update, :edit, :destroy]
+  end 
+
+  resources :admins, only: [:show] do 
     resources :foods, only: [:index, :show, :new, :create, :update, :edit, :destroy]
   end 
 
-    resources :users, only: [:show] do 
-      resources :bookings, only: [:index, :show, :new, :create, :update, :edit, :destroy]
-    end 
-
   resources :bookings, only: [:index, :show]
   resources :cafes, only: [:index, :show]
+  resources :foods, only: [:index, :show]
   resources :cafes_food
-  resources :foods
+  
   
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -21,8 +21,8 @@
                 <li><%= link_to 'Add a Cafe', new_admin_cafe_path(@admin) %></li>
                 <li><%= link_to 'Logout', logout_path %></li>
                 <li><%= link_to 'View all cafes', admin_cafes_path(@admin)%></li>
-                <li><%= link_to 'Add new food', new_food_path%></li>
-                <li><%= link_to 'View all foods', foods_path%></li>
+                <li><%= link_to 'Add new food', new_admin_food_path(@admin)%></li>
+                <li><%= link_to 'View all foods', admin_foods_path(@admin)%></li>
              </ul>
          </nav>
 <!--    END OF NAVIGATION  -->
@@ -62,8 +62,7 @@
                                 <td><%=c.zipcode%></td>
                                 <td><%= button_to('Edit', edit_admin_cafe_path(@admin, c), :method=>"get") %></td>
                                 <td><%= button_to('Delete', admin_cafe_path(@admin, c), :method=>"delete") %></td>
-                                <td><%= button_to('View Menu', cafe_foods_path(c), :method=>"get") %></td>
-                                <td><%= button_to('Add Menu', new_cafe_food_path(c), :method=>"get") %></td>
+                                
                                 </tr>
                             </tbody>
                             <% end %>
