@@ -27,7 +27,7 @@ class UsersController < ApplicationController
             @user = User.find_by(email: params[:user][:email])
                 if @user && @user.authenticate(params[:user][:password])
                     session[:user_id] = @user.id
-                    render "profile"
+                    redirect_to user_profile_path
                 else 
                     redirect_to user_login_path 
                 end 
@@ -41,16 +41,10 @@ class UsersController < ApplicationController
             u.email = auth['info']['email']
             u.password = SecureRandom.hex(10)
             u.contact = rand.to_s[2..11]
-
         end
         session[:user_id] = @user.id
         render "profile"
     end 
-
-    # def omniauth_failure
-    #     redirect_to user_login_path
-    #     #redirect wherever you want.
-    # end
 
     def profile 
         if is_logged_in?

@@ -2,16 +2,16 @@ class BookingsController < ApplicationController
 
     def index
       if is_logged_in?
+        @user = current_user
         if params[:user_id]
-          @user = current_user
           @bookings = User.find(params[:user_id]).bookings
           filtering_with_date_or_table_num
         else
-            @bookings = Booking.all 
-            filtering_with_date_or_table_num
+          @bookings = @user.bookings 
+          filtering_with_date_or_table_num
         end
       else 
-          redirect_to login_path 
+          redirect_to user_login_path 
       end 
     end
 
@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
             redirect_to user_profile_path
         end 
       else 
-        redirect_to login_path 
+        redirect_to user_login_path 
       end 
     end 
 
@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
         @user = current_user 
         @booking = @user.bookings.build
       else 
-        redirect_to login_path 
+        redirect_to user_login_path 
       end 
     end 
 
@@ -51,16 +51,20 @@ class BookingsController < ApplicationController
         if params[:user_id]
           @user = User.find_by(id: params[:user_id])
           if @user.nil?
-            redirect_to user_path, alert: "User not found."
+            redirect_to user_profile_path, alert: "User not found."
           else
             @booking = @user.bookings.find_by(id: params[:id])
             redirect_to user_bookings_path(user), alert: "Booking not found." if @booking.nil?
           end
         else
+          @user = current_user
           @booking = Booking.find(params[:id])
+            if @booking.user != @user 
+              redirect_to user_profile_path
+            end 
         end
       else 
-        redirect_to login_path 
+        redirect_to user_login_path 
       end 
     end
 
@@ -72,10 +76,14 @@ class BookingsController < ApplicationController
       end
 
     def destroy 
-      @user = current_user 
-      @booking = Booking.find(params[:id])
-      @booking.delete
-      redirect_to user_bookings_path(@user)
+      if is_logged_in?
+        @user = current_user 
+        @booking = Booking.find(params[:id])
+        @booking.delete
+        redirect_to user_bookings_path(@user)
+      else 
+        redirect_to user_login_path
+      end 
     end 
 
   private

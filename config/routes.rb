@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/admin/signup' => 'admins#create'
   get '/admin/login' => 'admins#login'
   post '/admin/login' => 'admins#signin'
+  get '/admin/profile' => 'admins#profile'
 
 
   get '/user/home' => 'users#home'
