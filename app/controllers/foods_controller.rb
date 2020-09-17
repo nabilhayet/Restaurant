@@ -17,8 +17,7 @@ class FoodsController < ApplicationController
         if is_logged_in?
           @admin = current_user
           @food = Food.find_by(params[:id])
-          binding.pry 
-          if @food.admin != @admin
+          if @food.admin.id != @admin.id 
               redirect_to admin_profile_path
           end 
         else 
@@ -38,7 +37,6 @@ class FoodsController < ApplicationController
       def create
           @admin = current_user 
           @food = Food.new(food_params)
-          binding.pry 
           if @food.save
             redirect_to admin_food_path(@admin, @food)
           else
@@ -91,6 +89,6 @@ class FoodsController < ApplicationController
     private
 
     def food_params
-        params.require(:food).permit(:name, :category, :fat, :calories)
+        params.require(:food).permit(:name, :category, :fat, :calories, :admin_id)
     end
 end
