@@ -1,6 +1,9 @@
-<% @cafe_foods.each do |cf| %>
+<% @cafes_food.each do |cf| %>
     <%= cf.cafe.name %>
     <%= cf.food.name %>
     <%= cf.price %>
     <hr>
+    <%= button_to('Edit', edit_cafe_cafes_food_path(cf.cafe, cf), :method=>"get") %>
+    <%= button_to('Delete', cafe_cafes_food_path(cf.cafe, cf), :method=>"delete") %>
+    <br> 
 <% end %>
