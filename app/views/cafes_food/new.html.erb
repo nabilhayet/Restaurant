@@ -1,0 +1,12 @@
+<%= form_for [@cafe, @cf] do |f| %>
+    Cafe : <%= f.collection_select :cafe_id, Cafe.all, :id, :name %>
+    <br>
+    <br>
+    Food : <%= f.collection_select :food_id, Food.all, :id, :name %>
+    <br>
+    <br>
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+    <br>
+    <br> 
+<% end %> 
