@@ -62,8 +62,8 @@
                                 <td><%=c.zipcode%></td>
                                 <td><%= button_to('Edit', edit_admin_cafe_path(@admin, c), :method=>"get") %></td>
                                 <td><%= button_to('Delete', admin_cafe_path(@admin, c), :method=>"delete") %></td>
-                                <td><%= button_to('Add food menu', new_cafe_cafes_food_path(c), :method=> "get") %></td>
-                                <td><%= button_to('View food menu', cafe_cafes_food_index_path(c), :method=> "get") %></td>
+                                <td><%= button_to('Add food menu', new_cafe_cafes_food_path(c.id), :method=> "get") %></td>
+                                <td><%= button_to('View food menu', cafe_cafes_food_index_path(c.id), :method=> "get") %></td>
                                 </tr>
                             </tbody>
                             <% end %>
