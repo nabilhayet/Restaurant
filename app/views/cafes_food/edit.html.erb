@@ -1,4 +1,55 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Web Template</title>
+    <link rel="stylesheet" href="application.css">
+</head>
+<body>
+   
+<!--   HEADER  -->
+  
+  <header>
+      <div class="head">
+         <h2>Bellyful</h2> 
+      </div>
+<!--    NAVIGATION  -->
+         <nav>
+             <ul>
+                <li><%= link_to 'Profile', admin_path(@admin), :class=> "active" %></li>
+                <li><%= link_to 'Add a Cafe', new_admin_cafe_path(@admin) %></li>
+                <li><%= link_to 'Logout', logout_path %></li>
+                <li><%= link_to 'View all cafes', admin_cafes_path(@admin)%></li>
+                <li><%= link_to 'Add new food', new_admin_food_path(@admin)%></li>
+                <li><%= link_to 'View all foods', admin_foods_path(@admin)%></li>
+             </ul>
+         </nav>
+<!--    END OF NAVIGATION  -->
+  </header>
+<!--  END OF HEADER  -->
+<h3>Welcome <%= @admin.name%> to your homepage!</h3>
+<!--SHOWCASE-->
+
+    <showcase>
+        <div class="container">
+            <h1>Food tastes better when you eat it with your family</h1>
+            <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
+            <div class="category">
+           
+
 <%= form_for [@cafe,@cf] do |f| %>
+    <% if @cf.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @cf.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="content">
     Cafe : <%= f.collection_select :cafe_id, Cafe.all, :id, :name %>
     <br>
     <br>
@@ -9,5 +60,13 @@
     <%= f.number_field :price %>
     <br>
     <br> 
-    <%= f.button "Make a Cafe Food", :class => 'btn' %>
+    <%= f.button "Edit Cafe Food", :class => 'btn' %>
 <% end %> 
+</div>
+</div>
+</div>
+</showcase> 
+<!--   END OF SHOWCASE  -->
+
+</body>
+</html>
