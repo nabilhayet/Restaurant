@@ -56,6 +56,7 @@ class CafesFoodController < ApplicationController
 
     def edit
         if is_logged_in?
+            @admin = current_user
           if params[:cafe_id]
             @cafe = Cafe.find_by(id: params[:cafe_id])
             if @cafe.nil?

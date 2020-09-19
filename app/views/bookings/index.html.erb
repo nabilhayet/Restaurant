@@ -47,8 +47,7 @@
                        <table class="content-table">
                                    <thead>
                                        <tr>
-                                       <th>User First Name</th>
-                                       <th>User Last Name</th>
+                                       <th>User Name</th>
                                        <th>Booking Date</th>
                                        <th>Booking Time</th>
                                        <th>Booking Table Num</th>
@@ -59,8 +58,7 @@
                                    <% @bookings.each do |b|%>
                                    <tbody>
                                        <tr>
-                                       <td><%= b.user.first_name%></td>q
-                                       <td><%=b.user.last_name%></td>
+                                       <td><%= b.user.name%></td>
                                        <td><%=b.date%></td>
                                        <td><%=b.time%></td>
                                        <td><%=b.table_num%></td>
