@@ -24,14 +24,13 @@ class UsersController < ApplicationController
     end 
 
     def signin
-            @user = User.find_by(email: params[:user][:email])
-                if @user && @user.authenticate(params[:user][:password])
-                    session[:user_id] = @user.id
-                    redirect_to user_profile_path
-                else 
-                    redirect_to user_login_path 
-                end 
-        
+        @user = User.find_by(email: params[:user][:email])
+            if @user && @user.authenticate(params[:user][:password])
+                session[:user_id] = @user.id
+                redirect_to user_profile_path
+            else 
+                redirect_to user_login_path 
+            end 
     end 
 
     def github
