@@ -4,14 +4,14 @@ Rails.application.routes.draw do
   post '/user/signup' => 'users#create'
   get '/user/login' => 'users#login'
   post '/user/login' => 'users#signin'
-  get '/user/profile' => 'users#profile'
+  get '/users/:id' => 'users#profile', as: 'user_profile'
   get '/logout' => 'application#logout'
 
   get '/admin/signup' => 'admins#new'
   post '/admin/signup' => 'admins#create'
   get '/admin/login' => 'admins#login'
   post '/admin/login' => 'admins#signin'
-  get '/admin/profile' => 'admins#profile'
+  get '/admins/:id' => 'admins#profile', as: 'admin_profile'
 
 
   get '/user/home' => 'users#home'

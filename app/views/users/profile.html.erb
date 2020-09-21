@@ -18,7 +18,7 @@
 <!--    NAVIGATION  -->
          <nav>
              <ul>
-                <li><%= link_to 'Profile', user_profile_path, :class=> "active" %></li>
+                <li><%= link_to 'Profile', user_profile_path(@user), :class=> "active" %></li>
                 <li><%= link_to 'Make a booking', new_user_booking_path(@user) %></li>
                 <li><%= link_to 'Logout', logout_path %></li>
                 <li><%= link_to 'View all bookings', user_bookings_path(@user) %></li>
