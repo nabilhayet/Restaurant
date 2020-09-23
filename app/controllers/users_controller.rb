@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
     def home 
-
     end 
 
     def new 
@@ -13,7 +12,7 @@ class UsersController < ApplicationController
         if @user.valid?
             @user.save
             session[:user_id] = @user.id
-            redirect_to user_profile_path 
+            redirect_to user_profile_path(@user) 
         else
             render "new"
         end 
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
         @user = User.find_by(email: params[:user][:email])
             if @user && @user.authenticate(params[:user][:password])
                 session[:user_id] = @user.id
-                redirect_to user_profile_path
+                redirect_to user_profile_path(@user)
             else 
                 redirect_to user_login_path 
             end 
@@ -42,26 +41,21 @@ class UsersController < ApplicationController
             u.contact = rand.to_s[2..11]
         end
         session[:user_id] = @user.id
-        render "profile"
+        redirect_to user_profile_path(@user)
     end 
 
     def profile 
         if is_logged_in?
             if current_user_type != "Admin"
-              @user = current_user
               render "profile"
             else
               @admin = current_user
-              redirect_to admin_path(@admin)
+              redirect_to admin_profile_path(@admin)
             end
         else
             redirect_to '/'
         end
     end 
-
-    
-
-    
 
     private 
 

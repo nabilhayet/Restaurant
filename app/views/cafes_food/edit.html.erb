@@ -38,30 +38,9 @@
             <div class="category">
            
 
-<%= form_for [@cafe,@cf] do |f| %>
-    <% if @cf.errors.any? %>
-    <div id="error_explanation">
-      <h2>There were some errors:</h2>
-      <ul>
-        <% @cf.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
-    <div class="content">
-    Cafe : <%= f.collection_select :cafe_id, Cafe.all, :id, :name %>
-    <br>
-    <br>
-    Food : <%= f.collection_select :food_id, Food.all, :id, :name %>
-    <br>
-    <br>
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-    <br>
-    <br> 
-    <%= f.button "Edit Cafe Food", :class => 'btn' %>
-<% end %> 
+
+   <%= render 'form' %> 
+ 
 </div>
 </div>
 </div>

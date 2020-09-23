@@ -4,7 +4,7 @@ class AdminsController < ApplicationController
     end 
 
     def new 
-        @admin = Admin.new 
+      @admin = Admin.new 
     end 
    
     def create
@@ -33,7 +33,6 @@ class AdminsController < ApplicationController
     end 
    
     def login
-      @admin = Admin.new 
     end 
    
     def signin

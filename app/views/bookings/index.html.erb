@@ -17,16 +17,16 @@
 <!--    NAVIGATION  -->
          <nav>
          <ul>
-         <li><%= link_to 'Profile', user_profile_path(@user), :class=> "active" %></li>
-         <li><%= link_to 'Make a booking', new_user_booking_path(@user) %></li>
+         <li><%= link_to 'Profile', user_profile_path(current_user), :class=> "active" %></li>
+         <li><%= link_to 'Make a booking', new_user_booking_path(current_user) %></li>
          <li><%= link_to 'Logout', logout_path %></li>
-         <li><%= link_to 'View all bookings', user_bookings_path(@user) %></li>
+         <li><%= link_to 'View all bookings', user_bookings_path(current_user) %></li>
        </ul>
        </nav>
        <!--    END OF NAVIGATION  -->
          </header>
        <!--  END OF HEADER  -->
-       <h3>Welcome <%= @user.name%> to your homepage!</h3>
+       <h3>Welcome <%= current_user.name%> to your homepage!</h3>
        <!--SHOWCASE-->
        
            <showcase>
@@ -35,7 +35,7 @@
                    <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
                    <div>
                     <h3>Filter bookings:</h3>
-                    <%= form_tag(user_bookings_path(@user), method: "get") do %>
+                    <%= form_tag(user_bookings_path(current_user), method: "get") do %>
                         <%= select_tag "date", options_for_select(["Date"]), include_blank: true %>
                         <%= select_tag "table_num", options_for_select(["Table_Num"]), include_blank: true %>
                     <%= submit_tag "Filter" %>
@@ -62,8 +62,8 @@
                                        <td><%=b.date%></td>
                                        <td><%=b.time%></td>
                                        <td><%=b.table_num%></td>
-                                       <td><%= button_to('Edit', edit_user_booking_path(@user, b), :method=>"get") %></td>
-                                       <td><%= button_to('Delete', user_booking_path(@user, b), :method=>"delete") %></td>
+                                       <td><%= button_to('Edit', edit_user_booking_path(current_user, b), :method=>"get") %></td>
+                                       <td><%= button_to('Delete', user_booking_path(current_user, b), :method=>"delete") %></td>
                                        </tr>
                                    </tbody>
                                    <% end %>

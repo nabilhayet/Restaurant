@@ -18,7 +18,7 @@ class FoodsController < ApplicationController
           @admin = current_user
           @food = Food.find_by(params[:id])
           if @food.admin.id != @admin.id 
-              redirect_to admin_profile_path
+              redirect_to admin_profile_path(@admin)
           end 
         else 
           redirect_to admin_login_path 
@@ -49,7 +49,7 @@ class FoodsController < ApplicationController
           if params[:admin_id]
             @admin = Admin.find_by(id: params[:admin_id])
             if @admin.nil?
-              redirect_to admin_profile_path, alert: "Admin not found."
+              redirect_to admin_profile_path(@admin), alert: "Admin not found."
             else
               @food = @admin.foods.find_by(id: params[:id])
               redirect_to admin_foods_path(@admin), alert: "Food not found." if @food.nil?
@@ -58,7 +58,7 @@ class FoodsController < ApplicationController
             @admin = current_user
             @food = Food.find(params[:id])
               if @food.admin != @admin
-                redirect_to admin_profile_path
+                redirect_to admin_profile_path(@admin)
               end 
           end
         else 
@@ -84,9 +84,7 @@ class FoodsController < ApplicationController
         end 
       end 
   
-   
-  
-    private
+   private
 
     def food_params
         params.require(:food).permit(:name, :category, :fat, :calories, :admin_id)

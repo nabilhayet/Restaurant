@@ -2,12 +2,21 @@ class BookingsController < ApplicationController
 
     def index
       if is_logged_in?
-        @user = current_user
         if params[:user_id]
-          @bookings = User.find(params[:user_id]).bookings
-          filtering_with_date_or_table_num
+          @user = User.find_by(id: params[:user_id])
+          if @user.nil?
+            redirect_to user_profile_path(@user), alert: "User not found."
+          else 
+            if @user != current_user
+               redirect_to user_profile_path(current_user)
+            else 
+                @bookings = current_user.bookings
+                filtering_with_date_or_table_num
+                binding.pry 
+            end 
+          end 
         else
-          @bookings = @user.bookings 
+          @bookings = current_user.bookings 
           filtering_with_date_or_table_num
         end
       else 
@@ -54,7 +63,7 @@ class BookingsController < ApplicationController
             redirect_to user_profile_path, alert: "User not found."
           else
             @booking = @user.bookings.find_by(id: params[:id])
-            redirect_to user_bookings_path(user), alert: "Booking not found." if @booking.nil?
+            redirect_to user_bookings_path(@user), alert: "Booking not found." if @booking.nil?
           end
         else
           @user = current_user

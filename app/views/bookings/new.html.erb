@@ -34,38 +34,8 @@
             <h1>Food tastes better when you eat it with your family</h1>
             <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
             <div class="category">
-              <%= form_for [@user, @booking] do |f| %>
-                <% if @booking.errors.any? %>
-                <div id="error_explanation">
-                  <h2>There were some errors:</h2>
-                  <ul>
-                    <% @booking.errors.full_messages.each do |message| %>
-                      <li><%= message %></li>
-                    <% end %>
-                  </ul>
-                </div>
-                <% end %>
-                <div class="content">
-                <h3>Select a cafe from the available options</h3> 
-                <%= f.collection_radio_buttons :cafe_id, Cafe.all, :id, :name %>
-                <%= f.hidden_field :user_id %>
-                <br>
-                <br>
-                <label>Booking Date:</label>
-                <%= f.date_field :date %>
-                <br>
-                <br>
-                <label>Booking Time</label><br>
-                <%= f.time_field :time %>
-                <br>
-                <br>
-                <label>Booking Table</label><br>
-                <%= f.select :table_num, (0..10) %>
-                <br>
-                <br>
-                <%= f.button "Make a Reservation", :class => 'btn' %>
-              <% end %>
-            </div>
+             <%= render 'form' %> 
+              </div>
           </div>
         </div>
 </showcase> 
