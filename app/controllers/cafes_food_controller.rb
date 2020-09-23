@@ -2,16 +2,24 @@ class CafesFoodController < ApplicationController
 
 
     def index
-        if is_logged_in?
-          @admin = current_user
-          if params[:cafe_id]
-            @cafes_food = Cafe.find(params[:cafe_id]).cafe_foods
-          else
-            redirect_to admin_profile_path
-          end
-        else 
-            redirect_to admin_login_path 
-        end 
+      if is_logged_in?
+        if params[:cafe_id]
+          @cafe = Cafe.find_by(id: params[:cafe_id])
+          if @cafe.nil?
+            redirect_to admin_profile_path(current_user), alert: "Cafe not found."
+          else 
+            if !current_user.cafe_ids.include?(@cafe.id)
+               redirect_to admin_profile_path(current_user)
+            else 
+              @cafes_food = @cafe.cafe_foods
+            end 
+          end 
+        else
+          redirect_to admin_profile_path(current_user)
+        end
+      else 
+          redirect_to admin_login_path 
+      end
     end
 
     def show 
@@ -33,17 +41,28 @@ class CafesFoodController < ApplicationController
     end 
 
     def new 
-        if is_logged_in?
-            @admin = current_user 
-            @cafe = Cafe.find_by_id(params[:cafe_id])
-            @cf = @cafe.cafe_foods.build 
+      if is_logged_in?
+        if params[:cafe_id]
+          @cafe = Cafe.find_by(id: params[:cafe_id])
+          if @cafe.nil?
+            redirect_to admin_profile_path(current_user), alert: "No such item found."
           else 
-            redirect_to admin_login_path 
+            if @cafe.admin != current_user
+               redirect_to admin_profile_path(current_user)
+            else 
+              @admin = current_user
+              @cf = @cafe.cafe_foods.build
+            end 
           end 
+        else 
+          admin_profile_path(current_user)
+        end 
+      else 
+        redirect_to admin_login_path 
+      end 
     end 
 
-
-      def create
+     def create
         @admin = current_user 
         @cafe = Cafe.find_by_id(params[:cafe_id])
         @cf = CafeFood.new(cafe_food_params)
@@ -60,7 +79,7 @@ class CafesFoodController < ApplicationController
           if params[:cafe_id]
             @cafe = Cafe.find_by(id: params[:cafe_id])
             if @cafe.nil?
-              redirect_to admin_profile_path, alert: "Cafe not found."
+              redirect_to admin_profile_path(@admin), alert: "Cafe not found."
             else
               @cf = @cafe.cafe_foods.find_by(id: params[:id])
               redirect_to cafe_cafes_food_index_path(@cafe), alert: "Cafe Food not found." if @cf.nil?
@@ -69,7 +88,7 @@ class CafesFoodController < ApplicationController
             @admin = current_user
             @cf = CafeFood.find_by_id(params[:id])
               if !@admin.cafe_ids.include?(@cf.cafe_id)
-                redirect_to admin_profile_path
+                redirect_to admin_profile_path(@admin)
               end 
           end
         else 
@@ -85,6 +104,8 @@ class CafesFoodController < ApplicationController
         end
   
       def destroy 
+
+        
         if is_logged_in?
           @admin = current_user 
           @cafe = Cafe.find_by(id: params[:cafe_id])
