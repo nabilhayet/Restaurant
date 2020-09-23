@@ -33,6 +33,7 @@ class AdminsController < ApplicationController
     end 
    
     def login
+      @admin = Admin.new 
     end 
    
     def signin

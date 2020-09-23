@@ -17,5 +17,18 @@ class Cafe < ApplicationRecord
     validates :zipcode, numericality: { only_integer: true }
     validates :zipcode, length: { is: 5 }
 
+    def self.search(search)
+        if search 
+            cafe_type = Cafe.find_by(name: search)
+            if cafe_type
+                self.where(cafe_id: cafe_type)
+            else 
+                @cafes = Cafe.all
+            end 
+        else 
+            @cafes = Cafe.all
+        end 
+    end 
+
     
 end

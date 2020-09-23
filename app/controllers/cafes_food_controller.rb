@@ -104,8 +104,6 @@ class CafesFoodController < ApplicationController
         end
   
       def destroy 
-
-        
         if is_logged_in?
           @admin = current_user 
           @cafe = Cafe.find_by(id: params[:cafe_id])

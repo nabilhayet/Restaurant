@@ -11,10 +11,12 @@ class CafesController < ApplicationController
                redirect_to admin_profile_path(current_user)
             else 
                 @cafes = current_user.cafes
+                @cafes = Cafe.search(params[:search])
             end 
           end 
         else
           @cafes = current_user.cafes
+          @cafes = Cafe.search(params[:search])
         end
       else 
           redirect_to admin_login_path 
@@ -128,6 +130,6 @@ class CafesController < ApplicationController
     private
 
   def cafe_params
-    params.require(:cafe).permit(:admin_id, :name, :street, :city, :state, :zipcode)
+    params.require(:cafe).permit(:admin_id, :name, :street, :city, :state, :zipcode, :search)
   end
 end
