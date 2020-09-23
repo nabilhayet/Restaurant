@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
             else 
                 @bookings = current_user.bookings
                 filtering_with_date_or_table_num
-                binding.pry 
             end 
           end 
         else
@@ -29,7 +28,7 @@ class BookingsController < ApplicationController
         @user = current_user
         @booking = Booking.find_by(params[:id])
         if @booking.user != @user 
-            redirect_to user_profile_path
+            redirect_to user_profile_path(@user)
         end 
       else 
         redirect_to user_login_path 
@@ -38,8 +37,21 @@ class BookingsController < ApplicationController
 
     def new 
       if is_logged_in?
-        @user = current_user 
-        @booking = @user.bookings.build
+        if params[:user_id]
+          @user = User.find_by(id: params[:user_id])
+          if @user.nil?
+            redirect_to user_profile_path(current_user), alert: "User not found."
+          else 
+            if @user != current_user
+               redirect_to user_profile_path(current_user)
+            else 
+              @user = current_user
+              @booking = @user.bookings.build
+            end 
+          end 
+        else 
+          user_profile_path(current_user)
+        end 
       else 
         redirect_to user_login_path 
       end 
@@ -60,7 +72,7 @@ class BookingsController < ApplicationController
         if params[:user_id]
           @user = User.find_by(id: params[:user_id])
           if @user.nil?
-            redirect_to user_profile_path, alert: "User not found."
+            redirect_to user_profile_path(current_user), alert: "User not found."
           else
             @booking = @user.bookings.find_by(id: params[:id])
             redirect_to user_bookings_path(@user), alert: "Booking not found." if @booking.nil?
@@ -69,7 +81,7 @@ class BookingsController < ApplicationController
           @user = current_user
           @booking = Booking.find(params[:id])
             if @booking.user != @user 
-              redirect_to user_profile_path
+              redirect_to user_profile_path(@user)
             end 
         end
       else 
@@ -86,11 +98,30 @@ class BookingsController < ApplicationController
 
     def destroy 
       if is_logged_in?
-        @user = current_user 
-        @booking = Booking.find(params[:id])
-        @booking.delete
-        redirect_to user_bookings_path(@user)
-      else 
+        if params[:user_id]
+          @user = User.find_by(id: params[:user_id])
+          if @user.nil?
+            redirect_to user_profile_path(current_user), alert: "User not found."
+          else
+            @booking = @user.bookings.find_by(id: params[:id])
+            if @booking.nil?
+              redirect_to user_bookings_path(@user), alert: "Booking not found."
+            else 
+              @booking.delete
+              redirect_to user_bookings_path(@user)
+            end 
+          end 
+        else
+          @user = current_user
+          @booking = Booking.find(params[:id])
+            if @booking.user != @user 
+              redirect_to user_profile_path(@user)
+            else 
+              @booking.delete
+              redirect_to user_bookings_path(@user)
+            end 
+        end 
+     else 
         redirect_to user_login_path
       end 
     end 
