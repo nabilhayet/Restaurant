@@ -21,7 +21,7 @@ class Cafe < ApplicationRecord
         if search 
             cafe_type = Cafe.find_by(name: search)
             if cafe_type
-                self.where(cafe_id: cafe_type)
+                self.where(name: cafe_type.name)
             else 
                 @cafes = Cafe.all
             end 

@@ -37,7 +37,7 @@
             <h3>Veg, Non-Veg and all kind of Snacks are available</h3>
             <div class="category">
                 <div class="content">
-                    <%= form_tag cafe_cafes_food_index_path(@admin), :method => "get" do %>
+                    <%= form_tag admin_cafes_path(@admin), :method => "get" do %>
                         <%= text_field_tag :search, params[:search] %>
                         <%= submit_tag("Search", :name => nil)%>
                     <% end %> 

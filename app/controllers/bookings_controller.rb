@@ -134,11 +134,11 @@ class BookingsController < ApplicationController
 
   def filtering_with_date_or_table_num
     if !params[:date].blank?
-      @bookings = Booking.with_date
+      @bookings = current_user.bookings.with_date
     elsif !params[:table_num].blank?
-      @bookings = Booking.with_table_num
+      @bookings = current_user.bookings.with_table_num
     else 
-      @bookings = Booking.all 
+      @bookings = current_user.bookings
     end 
   end 
 end
