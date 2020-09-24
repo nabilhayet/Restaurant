@@ -10,13 +10,13 @@ class CafesController < ApplicationController
             if @admin != current_user
                redirect_to admin_profile_path(current_user)
             else 
-                @cafes = current_user.cafes
-                @cafes = Cafe.search(params[:search])
+                @cafes = @admin.cafes.search(params[:search])
+                # @cafes = Cafe.search(params[:search])
             end 
           end 
         else
-          @cafes = current_user.cafes
-          @cafes = Cafe.search(params[:search])
+          @cafes = @admin.cafes.search(params[:search])
+          # @cafes = Cafe.search(params[:search])
         end
       else 
           redirect_to admin_login_path 

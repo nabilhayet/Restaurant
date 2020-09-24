@@ -105,16 +105,34 @@ class CafesFoodController < ApplicationController
   
       def destroy 
         if is_logged_in?
-          @admin = current_user 
+          @admin = current_user
+        if params[:cafe_id]
           @cafe = Cafe.find_by(id: params[:cafe_id])
-          @cafes_food = @cafe.cafe_foods.find_by(id: params[:id])
-          @cafes_food.delete
-          redirect_to cafe_cafes_food_index_path(@cafe)
-        else 
-          redirect_to admin_login_path
+          if @cafe.nil?
+            redirect_to admin_profile_path(@admin), alert: "Cafe not found."
+          else
+            @cafes_food = @cafe.cafe_foods.find_by(id: params[:id])
+            if @cafes_food.nil?
+              redirect_to cafe_cafes_food_index_path(@cafe), alert: "Cafe Food not found."
+            else 
+              @cafes_food.delete
+              redirect_to cafe_cafes_food_index_path(@cafe)
+            end 
+          end
+        else
+          @admin = current_user
+          @cafes_food = CafeFood.find_by_id(params[:id])
+              if !@admin.cafe_ids.include?(@cafes_food.cafe_id)
+                redirect_to admin_profile_path(@admin)
+              else 
+                @cafes_food.delete
+                redirect_to cafe_cafes_food_index_path(@cafe)
+              end 
         end 
-      end 
-  
+      else 
+        redirect_to admin_login_path 
+      end
+    end 
 
     private
 
