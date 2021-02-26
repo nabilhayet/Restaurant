@@ -69,10 +69,12 @@ Table of Contents
 
 <h3><a id="user-content-code-snippet" class="anchor" aria-hidden="true" href="#code-snippet"></a>Code-Snippet</h3>
 
+```
 def login
  @user = User.new 
 end 
-
+```
+```
 def signin
  @user = User.find_by(email: params[:user][:email])
   if @user && @user.authenticate(params[:user][:password])
@@ -82,6 +84,8 @@ def signin
    redirect_to user_login_path 
   end 
 end 
+```
+```
 
 def new 
  if is_logged_in?
@@ -91,6 +95,8 @@ def new
   redirect_to user_login_path 
  end 
 end 
+```
+```
 
 def create
  @user = current_user 
@@ -101,6 +107,7 @@ def create
   render :new
  end
 end
+```
 
 
 
