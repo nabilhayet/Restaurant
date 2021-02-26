@@ -27,10 +27,10 @@ Table of Contents
 <li>Add a new restaurant</li>
 <li>View all existing restaurants on this application</li>
 <li>Edit/Delete only the restaurants added by the logged in admin</li>
-* </ul>
+</ul>
 
-## Tech Stack
-This web app makes use of the following:
+<h3><a id="user-content-tech-stack" class="anchor" aria-hidden="true" href="#tech-stack"></a>Tech Stack</h3>
+<p>This web app makes use of the following:</p>
 
 * Ruby [2.6.1]
 * Rails [~> 6.0.2] - MVC Web Framework
@@ -38,28 +38,34 @@ This web app makes use of the following:
 * Bulma-Rails [~> 0.8.0] - Integrates Bulma with the rails asset pipeline, a modern CSS framework based on Flexbox.
 * BCrypt [~> 3.1.7] - Gem for encryption
 
-## Installing
-* Clone this repo to your local machine git clone <this-repo-url>
-* run bundle install to install required dependencies
-* run rails db:create to create a database locally.
-* run rails db:migrate to create tables into the database.
-* run rails db:seed to create seed data.
-* run rails s to run the server.
+<h3><a id="user-content-installing" class="anchor" aria-hidden="true" href="#installing"></a>Installing</h3>
+<ul>
+   <li> Clone this repo to your local machine git clone <this-repo-url></li>
+<li> run bundle install to install required dependencies</li>
+<li> run rails db:create to create a database locally.</li>
+<li> run rails db:migrate to create tables into the database.</li>
+<li> run rails db:seed to create seed data.</li>
+<li> run rails s to run the server.</li>
+</ul>
         
-## Challenges
-* Signing up via third party for the user was not working in the beginning with github.So i switched from github to facebook for omni-auth.
-* Making sure to prevent a user from accessing other user's info took some time.
-* Following restful routes pattern for nested routes was not easy.
-* Create a connection between restaurant and food felt like a mountain to climb.
+<h3><a id="user-content-challenges" class="anchor" aria-hidden="true" href="#challenges"></a>Challenges</h3>
+<ul>
+<li> Signing up via third party for the user was not working in the beginning with github.So i switched from github to facebook for omni-auth.</li>
+<li> Making sure to prevent a user from accessing other user's info took some time.</li>
+<li> Following restful routes pattern for nested routes was not easy.</li>
+<li> Create a connection between restaurant and food felt like a mountain to climb.</li>
+</ul>
 
-## Future Implementation
-* Adding nested form to make our app more efficient
-* Redesign database to make tables more standard
-* Insert images while adding new food
+<h3><a id="user-content-future-implementation" class="anchor" aria-hidden="true" href="#future-implementation"></a>Future-Implementation</h3>
+<ul>
+<li> Adding nested form to make our app more efficient</li>
+<li> Redesign database to make tables more standard</li>
+<li> Insert images while adding new food</li>
+</ul>
 
 Code Example For this project, activerecord, sqlite3, rake, bcrypt, omniauth-github, omniauth, dotenv-rails, omniauth-facebook, thin gems were used.
 
-## Code Snippet
+<h3><a id="user-content-code-snippet" class="anchor" aria-hidden="true" href="#code-snippet"></a>Code-Snippet</h3>
 
 def login
  @user = User.new 
