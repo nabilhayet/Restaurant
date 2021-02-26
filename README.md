@@ -6,9 +6,16 @@ The name of this project is Restaurant. This project lets a user or an admin to 
 <a href="https://www.youtube.com/watch?v=UWaRqHpO8fU&t=2s">Demo</a>
 
 Table of Contents
-1. <a href="#">Features</a>
+<ol>
+   <li><a id="user-content-features" href="#features">Features</a></li>
+ 2. [Tech Stack](#tech stack)
+ 3. [Installing](#installing)
+ 4. [Challenges](#challenges)
+ 5. [Future Implementation](#futureimplementation)
+ 6. [Code Snippet](#code snippet)
+ 7. </ol>
                                
-## Features
+<h3><a class="anchor" aria-hidden="true" href="#features"></a>Features</h3>
 * Sign in/Sign up option for users and admins
 * Sign in/Sign up option via third party for users
 * Full CRUD capabilities for userss such as
