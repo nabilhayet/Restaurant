@@ -8,24 +8,26 @@ The name of this project is Restaurant. This project lets a user or an admin to 
 Table of Contents
 <ol>
    <li><a id="user-content-features" href="#features">Features</a></li>
- 2. [Tech Stack](#tech stack)
- 3. [Installing](#installing)
- 4. [Challenges](#challenges)
- 5. [Future Implementation](#futureimplementation)
- 6. [Code Snippet](#code snippet)
- 7. </ol>
+    <li><a id="user-content-tech-stack" href="#tech stack">Tech Stack</a></li>
+    <li><a id="user-content-installing" href="#installing">Installing</a></li>
+    <li><a id="user-content-challenges" href="#challenges">Challenges</a></li>
+    <li><a id="user-content-future-implementation" href="#future-implementation">Future Implementation</a></li>
+    <li><a id="user-content-code-snippet" href="#code-snippet">Code Snippet</a></li>
+</ol>
                                
 <h3><a class="anchor" aria-hidden="true" href="#features"></a>Features</h3>
-* Sign in/Sign up option for users and admins
-* Sign in/Sign up option via third party for users
-* Full CRUD capabilities for userss such as
-* Make a new reservation
-* View all existing reservations on this application
-* Edit/Delete only the reservations make by the logged in user
-* Full CRUD capabilities for admins such as
-* Add a new restaurant
-* View all existing restaurants on this application
-* Edit/Delete only the restaurants added by the logged in admin
+<ul>
+   <li>Sign in/Sign up option for users and admins</li>
+<li>Sign in/Sign up option via third party for users</li>
+<li>Full CRUD capabilities for userss such as</li>
+<li>Make a new reservation</li>
+<li>View all existing reservations on this application</li>
+<li>Edit/Delete only the reservations make by the logged in user</li>
+<li>Full CRUD capabilities for admins such as</li>
+<li>Add a new restaurant</li>
+<li>View all existing restaurants on this application</li>
+<li>Edit/Delete only the restaurants added by the logged in admin</li>
+* </ul>
 
 ## Tech Stack
 This web app makes use of the following:
