@@ -32,11 +32,15 @@ Table of Contents
 <h3><a id="user-content-tech-stack" class="anchor" aria-hidden="true" href="#tech-stack"></a>Tech Stack</h3>
 <p>This web app makes use of the following:</p>
 
-* Ruby [2.6.1]
-* Rails [~> 6.0.2] - MVC Web Framework
-* SQLite3 [~> 1.4] - Database
-* Bulma-Rails [~> 0.8.0] - Integrates Bulma with the rails asset pipeline, a modern CSS framework based on Flexbox.
-* BCrypt [~> 3.1.7] - Gem for encryption
+* ruby '2.6.1'
+* 'rails', '~> 6.0.3', '>= 6.0.3.2'
+* 'sqlite3', '~> 1.4'
+* 'puma', '~> 4.1'
+* 'webpacker', '~> 4.0'
+* 'bcrypt', '~> 3.1.7'
+* 'omniauth-facebook'
+* 'thin'
+* 'omniauth'
 
 <h3><a id="user-content-installing" class="anchor" aria-hidden="true" href="#installing"></a>Installing</h3>
 <ul>
@@ -62,8 +66,6 @@ Table of Contents
 <li> Redesign database to make tables more standard</li>
 <li> Insert images while adding new food</li>
 </ul>
-
-Code Example For this project, activerecord, sqlite3, rake, bcrypt, omniauth-github, omniauth, dotenv-rails, omniauth-facebook, thin gems were used.
 
 <h3><a id="user-content-code-snippet" class="anchor" aria-hidden="true" href="#code-snippet"></a>Code-Snippet</h3>
 
