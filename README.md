@@ -31,7 +31,7 @@ Table of Contents
 
 ## Signup 
 
-![github](https://user-images.githubusercontent.com/33500404/109374160-39c10f00-7881-11eb-8468-553dd7d2e076.mov)
+![](https://user-images.githubusercontent.com/33500404/109374160-39c10f00-7881-11eb-8468-553dd7d2e076.mov)
 
 
 <h3><a id="user-content-tech-stack" class="anchor" aria-hidden="true" href="#tech-stack"></a>Tech Stack</h3>
