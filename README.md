@@ -29,6 +29,9 @@ Table of Contents
 <li>Edit/Delete only the restaurants added by the logged in admin</li>
 </ul>
 
+## Signup 
+<a href="https://imgflip.com/gif/4zo2lk">via Imgflip</a>
+
 <h3><a id="user-content-tech-stack" class="anchor" aria-hidden="true" href="#tech-stack"></a>Tech Stack</h3>
 <p>This web app makes use of the following:</p>
 
