@@ -30,7 +30,7 @@ Table of Contents
 </ul>
 
 ## Signup 
-![](https://imgflip.com/gif/4zo2lk)
+
 
 <h3><a id="user-content-tech-stack" class="anchor" aria-hidden="true" href="#tech-stack"></a>Tech Stack</h3>
 <p>This web app makes use of the following:</p>
