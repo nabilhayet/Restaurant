@@ -31,6 +31,9 @@ Table of Contents
 
 ## Signup 
 
+![dem](https://user-images.githubusercontent.com/33500404/109376302-97f5ee00-7891-11eb-89aa-6fdfd054c8c9.gif)
+
+
 <h3><a id="user-content-tech-stack" class="anchor" aria-hidden="true" href="#tech-stack"></a>Tech Stack</h3>
 <p>This web app makes use of the following:</p>
 
