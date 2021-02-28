@@ -1,7 +1,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/nabilhayet/Restaurant) ![GitHub forks](https://img.shields.io/github/forks/nabilhayet/Restaurant) ![GitHub followers](https://img.shields.io/github/followers/nabilhayet) ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/nabilhayet/Restaurant)                                          
                                         <h1>:jack_o_lantern: Restaurant :jack_o_lantern: </h1>
                                                       
-The name of this project is Restaurant. This project lets a user or an admin to sign-up and log-in. After logged in, a user can make a booking on a particular date at a fixed time by selecting an existing cafe in the system. An admin can also log into the system and view the existing cafes. Adding or deleting a cafe or a food item option is available to the admin.
+This project lets a user or an admin to sign-up and log-in. After logged in, a user can make a booking on a particular date at a fixed time by selecting an existing cafe in the system. An admin can also log into the system and view the existing cafes. Adding or deleting a cafe or a food item option is available to the admin.
 
 <a href="https://www.youtube.com/watch?v=UWaRqHpO8fU&t=2s">Demo</a>
 
