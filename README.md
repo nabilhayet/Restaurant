@@ -27,10 +27,9 @@ Table of Contents
   <li>Edit/Delete only the restaurants added by the logged in admin</li>
 </ul>
 
-## Signup 
+## Make Reservation
 
-![dem](https://user-images.githubusercontent.com/33500404/109376302-97f5ee00-7891-11eb-89aa-6fdfd054c8c9.gif)
-
+![make_res](https://user-images.githubusercontent.com/33500404/109456292-8265fd00-7a26-11eb-96f8-35cc644b9bd6.gif)
 
 ## Tech-Stack
 <p>This web app makes use of the following:</p>
