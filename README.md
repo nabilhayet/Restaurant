@@ -36,6 +36,13 @@ Table of Contents
 ## View Reservation 
 ![view_reservation](https://user-images.githubusercontent.com/33500404/109456997-f3f27b00-7a27-11eb-8cfe-7816b5dbce14.gif)
 
+## Add Cafe
+![add_cafe](https://user-images.githubusercontent.com/33500404/109458180-4fbe0380-7a2a-11eb-84db-92658ebf615a.gif)
+
+## Form Validation
+![Error_validation](https://user-images.githubusercontent.com/33500404/109458252-6ebc9580-7a2a-11eb-927f-fbbdfdc17d31.gif)
+
+
 ## Tech-Stack
 <p>This web app makes use of the following:</p>
 
