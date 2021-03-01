@@ -28,10 +28,9 @@ Table of Contents
 </ul>
 
 ## User Signup 
-
+![signup](https://user-images.githubusercontent.com/33500404/109457096-2ac89100-7a28-11eb-8b43-59f02ad884df.gif)
 
 ## Make Reservation
-
 ![make_res](https://user-images.githubusercontent.com/33500404/109456292-8265fd00-7a26-11eb-96f8-35cc644b9bd6.gif)
 
 ## View Reservation 
